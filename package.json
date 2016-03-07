@@ -1,0 +1,38 @@
+{
+  "name": "nhl-cli",
+  "version": "0.0.1",
+  "description": "A CLI tool to get NHL scores",
+  "main": "bin/nhl",
+  "preferGlobal": true,
+  "bin": {
+    "nhl": "./bin/nhl"
+  },
+  "scripts": {
+    "test": "NHL, CLI, scores, schedules, games"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ryanburgess/nhl-cli.git"
+  },
+  "keywords": [
+    "NHL",
+    "CLI",
+    "scores",
+    "schedules",
+    "games",
+    "hockey",
+    "sports"
+  ],
+  "author": "Ryan Burgess",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ryanburgess/nhl-cli/issues"
+  },
+  "homepage": "https://github.com/ryanburgess/nhl-cli#readme",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "cli-table": "^0.3.1",
+    "moment": "^2.11.2",
+    "request": "^2.69.0"
+  }
+}

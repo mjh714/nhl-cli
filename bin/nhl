@@ -1,0 +1,28 @@
+#!/usr/bin/env node
+var argument = process.argv[2];
+var argumentSec = process.argv[3];
+var moment = require('moment');
+var nhl = require('../index');
+var today = moment();
+
+switch (true) {
+  case (argument === 'date'):
+    nhl(argumentSec);
+  break;
+  case (argument === 'tomorrow'):
+    var tomorrow = today.add(1, 'days');
+    var tomorrowDate = moment(tomorrow).format('YYYY-MM-DD');
+    nhl(tomorrowDate);
+  break;
+  case (argument === 'yesterday'):
+    var yesterday = today.add(-1, 'days');
+    var yesterdayDate = moment(yesterday).format('YYYY-MM-DD');
+    nhl(yesterdayDate);
+  break;
+  case (argument === 'today'):
+    nhl();
+  break;
+  default:
+    nhl();
+  break;
+}
