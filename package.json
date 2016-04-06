@@ -1,14 +1,16 @@
 {
   "name": "nhl-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A CLI tool to get NHL scores",
   "main": "bin/nhl",
+  "engines": {
+    "node": "4.4.2"
+  },
   "preferGlobal": true,
   "bin": {
     "nhl": "./bin/nhl"
   },
   "scripts": {
-    "test": "NHL, CLI, scores, schedules, games"
   },
   "repository": {
     "type": "git",

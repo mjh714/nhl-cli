@@ -1,22 +1,23 @@
 #!/usr/bin/env node
-var argument = process.argv[2];
-var argumentSec = process.argv[3];
-var moment = require('moment');
-var nhl = require('../index');
-var today = moment();
+'use strict';
+const argument = process.argv[2];
+const argumentSec = process.argv[3];
+const moment = require('moment');
+const nhl = require('../index');
+const today = moment();
 
 switch (true) {
   case (argument === 'date'):
     nhl(argumentSec);
   break;
   case (argument === 'tomorrow'):
-    var tomorrow = today.add(1, 'days');
-    var tomorrowDate = moment(tomorrow).format('YYYY-MM-DD');
+    const tomorrow = today.add(1, 'days');
+    const tomorrowDate = moment(tomorrow).format('YYYY-MM-DD');
     nhl(tomorrowDate);
   break;
   case (argument === 'yesterday'):
-    var yesterday = today.add(-1, 'days');
-    var yesterdayDate = moment(yesterday).format('YYYY-MM-DD');
+    const yesterday = today.add(-1, 'days');
+    const yesterdayDate = moment(yesterday).format('YYYY-MM-DD');
     nhl(yesterdayDate);
   break;
   case (argument === 'today'):
