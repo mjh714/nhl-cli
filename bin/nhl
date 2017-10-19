@@ -3,7 +3,7 @@
 const argument = process.argv[2];
 const argumentSec = process.argv[3];
 const moment = require('moment');
-const nhl = require('../schedule');
+const nhl = require('../index');
 const today = moment();
 
 switch (true) {
