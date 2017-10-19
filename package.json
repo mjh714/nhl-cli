@@ -1,6 +1,6 @@
 {
   "name": "nhl-cli",
-  "version": "0.0.2",
+  "version": "1.0.0",
   "description": "A CLI tool to get NHL scores",
   "main": "bin/nhl",
   "engines": {
@@ -10,8 +10,7 @@
   "bin": {
     "nhl": "./bin/nhl"
   },
-  "scripts": {
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ryanburgess/nhl-cli.git"
@@ -34,7 +33,7 @@
   "dependencies": {
     "cheerio": "^0.20.0",
     "cli-table": "^0.3.1",
-    "moment": "^2.11.2",
+    "moment": "^2.19.1",
     "request": "^2.69.0"
   }
 }

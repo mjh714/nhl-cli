@@ -3,7 +3,7 @@
 const argument = process.argv[2];
 const argumentSec = process.argv[3];
 const moment = require('moment');
-const nhl = require('../index');
+const nhl = require('../schedule');
 const today = moment();
 
 switch (true) {
@@ -21,9 +21,9 @@ switch (true) {
     nhl(yesterdayDate);
   break;
   case (argument === 'today'):
-    nhl();
+    nhl(today.format('YYYY-MM-DD'));
   break;
   default:
-    nhl();
+    nhl(today.format('YYYY-MM-DD'));
   break;
 }

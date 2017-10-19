@@ -21,7 +21,9 @@ module.exports = function nhl(date) {
         colWidths: [30, 10, 30, 30]
     });
 
-    $('.list .game').each(function() {
+    console.log('test')
+
+    $('.Mb(0px) .game').each(function() {
       const away = $(this).find('.away').children('.team').text().trim();
       const home = $(this).find('.home').children('.team').text().trim();
       const scoreHome = $(this).find('.score .home').text();
@@ -29,7 +31,7 @@ module.exports = function nhl(date) {
       let details = $(this).find('.details span').text();
       const summary = $(this).find('.summary .time').text();
       const tv = $(this).find('.summary .tv').text();
-
+      
       if(summary !== ''){
         details = summary + ' ' + tv;
       }
