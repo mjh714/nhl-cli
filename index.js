@@ -4,11 +4,8 @@ const request = require('request');
 const Table = require('cli-table');
 
 module.exports = function nhl(date) {
-  
-  let url = 'http://sports.yahoo.com/nhl/scoreboard';
-  if(date !== undefined){
-    url = 'http://sports.yahoo.com/nhl/scoreboard/?date=' + date;
-  }
+  // date is passed and formatted from bin/nhl
+  const url = 'http://sports.yahoo.com/nhl/scoreboard/?dateRange=' + date;
   request({
       method: 'GET',
       url: url
@@ -16,26 +13,32 @@ module.exports = function nhl(date) {
     if (err) return console.error(err);
     const $ = cheerio.load(body);
 
+    // construct output table layout for headings and columns
     const table = new Table({
         head: ['Home', 'Scores', 'Away', 'Status'],
         colWidths: [30, 10, 30, 30]
     });
 
-    $('.list .game').each(function() {
-      const away = $(this).find('.away').children('.team').text().trim();
-      const home = $(this).find('.home').children('.team').text().trim();
-      const scoreHome = $(this).find('.score .home').text();
-      const scoreAway = $(this).find('.score .away').text();
-      let details = $(this).find('.details span').text();
-      const summary = $(this).find('.summary .time').text();
-      const tv = $(this).find('.summary .tv').text();
+    // use the score class to look for the score/schedule data
+    $('.score').each(function() {
+      const home = $(this).find('li:first-child').find('[data-tst="first-name"]').text().trim();
+      const away = $(this).find('li:nth-child(2)').find('[data-tst="first-name"]').text().trim();
+      const score = $(this).find('li').find('div:nth-child(3)').text();
+      const scoreHome = score.charAt(0);
+      const scoreAway = score.charAt(1);
+      const details = $(this).parent().prev().find('.status').text();
 
-      if(summary !== ''){
-        details = summary + ' ' + tv;
+      // for future games use the away score to determine if it should be blank
+      let scoreOutput;
+      if (scoreAway === '-') {
+        scoreOutput = '-';
+      }else {
+        scoreOutput = scoreHome + '-' + scoreAway;
       }
 
+      // push data to table array
       table.push(
-        [home, scoreHome + ' - ' + scoreAway, away, details]
+        [home, scoreOutput, away, details]
       );
     });
 

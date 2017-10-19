@@ -21,9 +21,9 @@ switch (true) {
     nhl(yesterdayDate);
   break;
   case (argument === 'today'):
-    nhl();
+    nhl(today.format('YYYY-MM-DD'));
   break;
   default:
-    nhl();
+    nhl(today.format('YYYY-MM-DD'));
   break;
 }
